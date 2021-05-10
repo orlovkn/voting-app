@@ -16,10 +16,10 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans text-gray-900 text-small">
+    <body class="font-sans bg-gray-background text-gray-900 text-small">
         <div class="min-h-screen bg-gray-100">
             <header class="flex items-center justify-between px-8 py-4">
-                <a href="#">Laracasts logo</a>
+                <a href="#"><img src="{{ asset('img//logo.svg')  }}" alt=""></a>
                 <div class="flex items-center">
                     @if (Route::has('login'))
                         <div class="px-6 py-4">
