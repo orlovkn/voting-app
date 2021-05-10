@@ -8,7 +8,7 @@
         <title>Laracasts voting</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -16,21 +16,35 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans text-gray-900 text-small">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            <header class="flex items-center justify-between px-8 py-4">
+                <a href="#">Laracasts logo</a>
+                <div class="flex items-center">
+                    @if (Route::has('login'))
+                        <div class="px-6 py-4">
+                            @auth
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        {{ __('Log out') }}
+                                    </a>
+                                </form>
+                            @else
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+
+                    <a href="">avatar</a>
                 </div>
             </header>
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
         </div>
     </body>
 </html>
