@@ -18,9 +18,9 @@ docker exec -it voting-app-php bash
 **connect your database**
 ```
 DB_CONNECTION=mysql
-DB_HOST=lar-todo-app-mysql
+DB_HOST=voting-app-mysql
 DB_PORT=3306
-DB_DATABASE=lar-todo-app
+DB_DATABASE=voting-app
 DB_USERNAME=admin
 DB_PASSWORD=secret
 ```
@@ -44,4 +44,7 @@ php artisan migrate
 ```
 php artisan make:controller Itemcontroller --resource
 ```
+
+### install breeze
+https://github.com/laravel/breeze
 
