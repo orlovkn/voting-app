@@ -1,0 +1,47 @@
+version: '3.0'
+
+services:
+
+    # nginx
+    nginx-service:
+      build:
+        context: ./docker/nginx
+      container_name: ${PROJECT_NAME}-nginx
+      ports:
+        - "8080:80"
+      volumes:
+        - ./app:/app
+      depends_on:
+        - php74-service
+        - mysql8-service
+      restart: always
+
+    # php
+    php74-service:
+      build:
+        context: ./docker/php
+      container_name: ${PROJECT_NAME}-php
+      ports:
+        - "9000:9000"
+      volumes:
+        - ./app:/app
+      restart: always
+
+    # mysql
+    mysql8-service:
+      image: mysql:8.0
+      container_name: ${PROJECT_NAME}-mysql
+      ports:
+        - "4306:3306"
+      volumes:
+        - mysql8-volume:/var/lib/mysql
+      command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      restart: always
+      environment:
+        - "MYSQL_USER=${MYSQL_USER}"
+        - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
+        - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+        - "MYSQL_DATABASE=${MYSQL_DATABASE}"
+
+volumes:
+  mysql8-volume:
