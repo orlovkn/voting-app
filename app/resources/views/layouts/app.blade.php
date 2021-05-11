@@ -45,6 +45,31 @@
                     <a href="">avatar</a>
                 </div>
             </header>
+
+            <main class="container mx-auto max-w-custom flex">
+                <div class="w-70 mr-5">
+                    <h3>idea form</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at autem, deleniti illo iure laborum magnam minus qui, recusandae saepe sed ut vero? A consectetur cupiditate eum laborum officia quo sequi tenetur. Ad architecto, consequuntur deserunt ducimus eveniet expedita, inventore itaque nemo omnis perspiciatis quam repudiandae sed voluptas, voluptate voluptatem.
+                </div>
+                <div class="w-175">
+                    <nav class="flex items-center justify-between text-xs">
+                        <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                            <li><a href="" class="border-b-4 pb-3 border-blue">All ideas (87)</a></li>
+                            <li><a href="" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Considering (6)</a></li>
+                            <li><a href="" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">In progress (1)</a></li>
+                        </ul>
+
+                        <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                            <li><a href="" class="border-b-4 pb-3 border-blue">Implemented (87)</a></li>
+                            <li><a href="" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Closed (6)</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="mt-8">
+                        {{ $slot  }}
+                    </div>
+                </div>
+            </main>
         </div>
     </body>
 </html>
