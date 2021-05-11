@@ -17,7 +17,7 @@ module.exports = {
                 'red': '#ec454f',
                 'green': '#1aab8b',
                 'purple': '#8b60ed',
-                'gray': '#666666'
+                'gray': '#dddddd'
             },
             fontFamily: {
                 sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
@@ -38,5 +38,8 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/line-clamp')
+    ],
 };

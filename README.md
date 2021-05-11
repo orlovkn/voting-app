@@ -48,3 +48,4 @@ php artisan make:controller Itemcontroller --resource
 ### install breeze
 https://github.com/laravel/breeze
 
+npm install @tailwindcss/line-clamp
