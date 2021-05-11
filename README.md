@@ -49,3 +49,20 @@ php artisan make:controller Itemcontroller --resource
 https://github.com/laravel/breeze
 
 npm install @tailwindcss/line-clamp
+
+### install liveware
+https://laravel-livewire.com/docs/2.x/quickstart
+
+### install debugbar
+https://github.com/barryvdh/laravel-debugbar
+
+### other installations
+this one creates model, migration and controller
+```
+php artisan make:model Idea -a
+```
+
+refresh migration
+```
+php artisan migrate:fresh --seed
+```
