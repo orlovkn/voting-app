@@ -68,7 +68,7 @@ php artisan migrate:fresh --seed
 ```
 
 Eloquent-Sluggable
-```bigquery
+```
 https://github.com/cviebrock/eloquent-sluggable
 ```
 
@@ -83,4 +83,7 @@ php artisan make:test ShowIdeasTest
 run tests
 ```
 php artisan test
+php artisan test --parallel
 ```
+
+```php artisan package:discover --ansi```
