@@ -17,7 +17,7 @@ class IdeaController extends Controller
 //        return Idea::all();
         return view('idea.index', [
 //            'ideas' => Idea::all(),
-            'ideas' => Idea::simplePaginate(10),
+            'ideas' => Idea::simplePaginate(Idea::PAGINATION_COUNT),
         ]);
     }
 

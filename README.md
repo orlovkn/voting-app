@@ -71,3 +71,16 @@ Eloquent-Sluggable
 ```bigquery
 https://github.com/cviebrock/eloquent-sluggable
 ```
+
+### tests
+https://laravel.com/docs/8.x/testing
+
+create new
+```
+php artisan make:test ShowIdeasTest
+```
+
+run
+```
+php artisan test
+```
