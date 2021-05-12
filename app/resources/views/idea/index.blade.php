@@ -51,6 +51,8 @@
 
                     <div class="flex items-center justify-between mt-6">
                         <div class="flex items-center text-xs font-semibold space-x-2">
+                            <div>{{ $idea->user->name }}</div>
+                            <div>&bull;</div>
                             <div>{{ $idea->created_at->diffForHumans() }}</div>
                             <div>&bull;</div>
                             <div>Category 1</div>
@@ -75,5 +77,9 @@
         </div>
         @endforeach
 
+    </div>
+
+    <div class="my-8">
+        {{ $ideas->links() }}
     </div>
 </x-app-layout>

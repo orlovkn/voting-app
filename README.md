@@ -66,3 +66,8 @@ refresh migration
 ```
 php artisan migrate:fresh --seed
 ```
+
+Eloquent-Sluggable
+```bigquery
+https://github.com/cviebrock/eloquent-sluggable
+```
