@@ -52,37 +52,32 @@
                     <div class="border-2 border-gray rounded-xl mt-16">
                         <div class="text-center px-1 p-2 pt-6">
                             <h3 class="font-semibold text-base">Add an idea</h3>
-                            <p class="text-xs mt-4">Add something</p>
+                            <p class="text-xs mt-4">
+                                @auth
+                                    Add a new idea
+                                @else
+                                    Please login to create an idea
+                                @endauth
+                            </p>
 
-                            <form action="#" method="post" class="space-y-4 px-4 py-6">
-                                <div>
-                                    <input type="text" class="text-sm border-none w-full rounded-xl px-4 py-2" placeholder="Your idea">
-                                </div>
-                                <div>
-                                    <select name="category_add" id="category_add" class="text-sm w-full rounded-xl ph-4 py-2 border-none">
-                                        <option value="One">One</option>
-                                        <option value="Two">Two</option>
-                                        <option value="Three">Three</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <textarea name="idea" id="idea" cols="30" rows="10" class="w-full rounded-xl text-sm px-4 py-2 border-none" placeholder="Describe your idea"></textarea>
-                                </div>
-                                <div class="flex items-center justify-between space-x-3">
-                                    <button
-                                        type="button"
-                                        class="flex items-center w-1/2 h-11 text-xs space-x-3 font-semibold px-6 py-3 bg-gray rounded-xl"
+                            @auth
+                                <livewire:create-idea />
+                            @else
+                                <div class="my-6 text-center">
+                                    <a
+                                        href="{{ route('login') }}"
+                                        class="inline-block justify-center w-1/2 h-11 text-xs space-x-3 font-semibold px-6 py-3 bg-blue hover:bg-blue-hover text-white rounded-xl"
                                     >
-                                        <span class="ml-2">Attach</span>
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        class="flex items-center w-1/2 h-11 text-xs space-x-3 font-semibold px-6 py-3 bg-blue hover:bg-blue-hover text-white rounded-xl"
+                                        Login
+                                    </a>
+                                    <a
+                                        href="{{ route('register') }}"
+                                        class="inline-block justify-center w-1/2 h-11 text-xs space-x-3 font-semibold px-6 py-3 bg-gray text-white rounded-xl mt-4"
                                     >
-                                        <span class="ml-2">Submit</span>
-                                    </button>
+                                        Sign Up
+                                    </a>
                                 </div>
-                            </form>
+                            @endauth
                         </div>
                     </div>
                 </div>

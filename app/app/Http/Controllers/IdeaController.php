@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class IdeaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 //        return Idea::all();
@@ -19,6 +14,7 @@ class IdeaController extends Controller
 //            'ideas' => Idea::all(),
 //            'ideas' => Idea::simplePaginate(Idea::PAGINATION_COUNT),
             'ideas' => Idea::with('user', 'category', 'status')
+                           ->orderBy('id', 'desc')
                            ->simplePaginate(Idea::PAGINATION_COUNT),
         ]);
     }

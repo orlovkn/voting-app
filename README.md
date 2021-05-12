@@ -87,3 +87,9 @@ php artisan test --parallel
 ```
 
 ```php artisan package:discover --ansi```
+
+
+add liveware component
+```
+php artisan make:livewire CreateIdea
+```
