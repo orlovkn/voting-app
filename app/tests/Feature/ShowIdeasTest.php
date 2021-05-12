@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\Idea;
+use App\Models\Status;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -17,10 +18,13 @@ class ShowIdeasTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray']);
+
         $ideaOne = Idea::factory()->create(
             [
                 'title'       => 'My first title',
                 'category_id' => $categoryOne->id,
+                'status_id' => $statusOpen->id,
                 'description' => 'My first description',
             ]
         );
@@ -29,6 +33,7 @@ class ShowIdeasTest extends TestCase
             [
                 'title'       => 'My second title',
                 'category_id' => $categoryTwo->id,
+                'status_id' => $statusOpen->id,
                 'description' => 'My second description',
             ]
         );
@@ -39,6 +44,7 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($ideaOne->title);
         $response->assertSee($ideaOne->description);
         $response->assertSee($categoryOne->name);
+        $response->assertSee('bg-gray font-bold text-xs uppercase w-28 text-center rounded-2xl text-white h-7 py-2 px-4', false);
     }
 
     /** @test */
@@ -46,10 +52,13 @@ class ShowIdeasTest extends TestCase
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
 
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray']);
+
         $idea = Idea::factory()->create(
             [
                 'title'       => 'My first title',
                 'category_id' => $categoryOne->id,
+                'status_id' => $statusOpen->id,
                 'description' => 'My first description',
             ]
         );
@@ -59,6 +68,7 @@ class ShowIdeasTest extends TestCase
         $response->assertSuccessful();
         $response->assertSee($idea->title);
         $response->assertSee($idea->description);
+//        $response->assertSee('bg-gray font-bold text-xs uppercase w-28 text-center rounded-2xl text-white h-7 py-2 px-4', false);
     }
 
     /** @test */
@@ -66,7 +76,9 @@ class ShowIdeasTest extends TestCase
     {
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
 
-        Idea::factory(Idea::PAGINATION_COUNT + 1)->create(['category_id' => $categoryOne->id]);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray']);
+
+        Idea::factory(Idea::PAGINATION_COUNT + 1)->create(['category_id' => $categoryOne->id, 'status_id' => $statusOpen->id]);
 
         $ideaOne = Idea::find(1);
         $ideaOne->title = 'My first idea';
@@ -81,6 +93,7 @@ class ShowIdeasTest extends TestCase
 
         $response->assertSee($ideaOne->title);
         $response->assertDontSee($ideaEleven->title);
+        $response->assertSee('bg-gray font-bold text-xs uppercase w-28 text-center rounded-2xl text-white h-7 py-2 px-4', false);
 
         $response = $this->get('/?page=2');
         $response->assertSee($ideaEleven->title);
@@ -90,13 +103,15 @@ class ShowIdeasTest extends TestCase
     /** @test */
     public function same_idea_title_with_different_slugs()
     {
-
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
+
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray']);
 
         $ideaOne = Idea::factory()->create(
             [
                 'title'       => 'My first idea',
                 'category_id' => $categoryOne->id,
+                'status_id'   => $statusOpen->id,
                 'description' => 'My first description',
             ]
         );
@@ -105,6 +120,7 @@ class ShowIdeasTest extends TestCase
             [
                 'title'       => 'My first idea',
                 'category_id' => $categoryOne->id,
+                'status_id'   => $statusOpen->id,
                 'description' => 'My first description',
             ]
         );

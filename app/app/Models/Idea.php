@@ -32,4 +32,34 @@ class Idea extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
+   /* public function getStatusClasses()
+    {
+        $allStatuses = [
+            'Open' => 'bg-gray',
+            'Considering' => 'bg-purple text-white',
+            'In progress' => 'bg-yellow text-white',
+            'Implemented' => 'bg-green text-white',
+            'Closed' => 'bg-red text-white',
+        ];
+
+//        if ($this->status->name === 'Open') {
+//            return 'bg-gray';
+//        } elseif ($this->status->name === 'Considering') {
+//            return 'bg-purple text-white';
+//        } elseif ($this->status->name === 'In progress') {
+//            return 'bg-yellow text-white';
+//        } elseif ($this->status->name === 'Implemented') {
+//            return 'bg-green text-white';
+//        } elseif ($this->status->name === 'Closed') {
+//            return 'bg-red text-white';
+//        }
+
+        return $allStatuses[$this->status->name];
+    }*/
 }
