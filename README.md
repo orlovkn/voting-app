@@ -80,7 +80,7 @@ create new
 php artisan make:test ShowIdeasTest
 ```
 
-run
+run tests
 ```
 php artisan test
 ```
