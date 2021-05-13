@@ -91,13 +91,13 @@ class ShowIdeasTest extends TestCase
 //        $response = $this->get(route('idea.index'));
         $response = $this->get('/');
 
-        $response->assertSee($ideaOne->title);
-        $response->assertDontSee($ideaEleven->title);
+        $response->assertSee($ideaEleven->title);
+        $response->assertDontSee($ideaOne->title);
         $response->assertSee('bg-gray font-bold text-xs uppercase w-28 text-center rounded-2xl text-white h-7 py-2 px-4', false);
 
         $response = $this->get('/?page=2');
-        $response->assertSee($ideaEleven->title);
-        $response->assertDontSee($ideaOne->title);
+        $response->assertSee($ideaOne->title);
+        $response->assertDontSee($ideaEleven->title);
     }
 
     /** @test */
